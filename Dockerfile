@@ -1,7 +1,7 @@
-FROM ubuntu:xenial
-ENV PORT    3000
+FROM alpine
+
+ADD config.pb /config.pb
 ADD main_worker /main_worker
-ADD starts /starts
 RUN chmod +x /main_worker
-RUN chmod +x /starts
-CMD ./starts
+
+CMD /main_worker -c /config.pb
